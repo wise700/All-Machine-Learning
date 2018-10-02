@@ -8,6 +8,7 @@ Created on Sun Aug 26 17:16:03 2018
 import pandas as pd
 import matplotlib
 import seaborn as sns
+import numpy as np
 #matplotlib inline
 from sklearn.decomposition import PCA
 
@@ -48,7 +49,7 @@ data=pd.concat([train['OverallQual'],train['SalePrice']],axis=1)
 sns.boxplot(x='OverallQual',y='SalePrice',data=data)
 
 data=pd.concat([train['YearBuilt'],train['SalePrice']],axis=1)
-data.plot.scatter(x='YearBuilt',y='SalePrice');
+data.plot.scatter(x='YearBuilt',y='SalePrice')
 
 sns.boxplot(x='YearBuilt',y='SalePrice',data=data)
 
@@ -66,3 +67,19 @@ corr=train.corr()
 sns.heatmap(corr,vmax=0.8)
 
 
+#Zoomed heat map
+
+cols1=corr.nlargest(10,'SalePrice')['SalePrice'].index
+cm=np.corrcoef(train[cols1].values.T)
+
+hm = sns.heatmap(cm, cbar=True, annot=True, square=True, fmt='.2f', annot_kws={'size': 10}, yticklabels=cols.values, xticklabels=cols.values)
+
+cols=cols1.drop('SalePrice')
+
+# Scatter plots , Jagger style
+sns.pairplot(train[cols])
+
+
+#Missing Data
+#Finding out the cols with missing data with %
+total=train.isnull().sum().sort_values(ascending=False);
