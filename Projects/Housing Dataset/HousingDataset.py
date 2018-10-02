@@ -39,4 +39,30 @@ data.plot.scatter(x='GrLivArea',y='SalePrice')
 
 #SalePrice and TotalBsmtSF
 data=pd.concat([train['TotalBsmtSF'],train['SalePrice']],axis=1);
-data.plot.scatter(x='TotalBsmtSF',y='SalePrice')
+#data.plot.scatter(x='TotalBsmtSF',y='SalePrice')
+
+
+
+#Relationship with Categorical Vaaribales
+data=pd.concat([train['OverallQual'],train['SalePrice']],axis=1)
+sns.boxplot(x='OverallQual',y='SalePrice',data=data)
+
+data=pd.concat([train['YearBuilt'],train['SalePrice']],axis=1)
+data.plot.scatter(x='YearBuilt',y='SalePrice');
+
+sns.boxplot(x='YearBuilt',y='SalePrice',data=data)
+
+# Finding relationships with Density plots for categorical variables
+#Lets look how the density plot looks for Categorocal variable Bulding type vs SalesPrice
+BuildingTypes = train.Neighborhood.unique();
+
+for building in BuildingTypes:
+    subset=train[train['Neighborhood']==building]
+    #Draw Density plot
+    sns.distplot(subset['SalePrice'],hist=False,kde=True,label=building,kde_kws = {'linewidth': 3})
+#Correlation Matrix
+
+corr=train.corr()
+sns.heatmap(corr,vmax=0.8)
+
+
