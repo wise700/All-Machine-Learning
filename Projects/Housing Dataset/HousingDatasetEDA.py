@@ -83,3 +83,15 @@ sns.pairplot(train[cols])
 #Missing Data
 #Finding out the cols with missing data with %
 total=train.isnull().sum().sort_values(ascending=False);
+percentage=total/1460*100
+
+missing_Values=pd.concat([total,percentage],axis=1,keys=['total','percentage'])
+
+#deleting all the cols where it has > 15% of missing values
+colsToDelete=missing_Values[missing_Values['percentage']>15].index;
+train=train.drop(colsToDelete,1)
+
+train=train.drop(train.loc[train['Electrical'].isnull()].index);
+
+
+#lets train a model
