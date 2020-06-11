@@ -1,0 +1,4 @@
+1. As on 18 Apr 2020, Stable tensorflow is supported only till python 3.6
+   So if we have 3.7 and all, we need to install python 3.6
+
+2. Another prerequisite for TF is MS Viual studio C++ 2015 redistributable
