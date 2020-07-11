@@ -1,0 +1,8 @@
+ALso called L1 and L2 regularization
+
+
+1. THis is to avid overfitting
+
+2. This technique discourages learning a more complex or flexible model, so as to avoid the risk of overfitting.
+
+3. RIdge and Lasso are two kinds of regularization.
