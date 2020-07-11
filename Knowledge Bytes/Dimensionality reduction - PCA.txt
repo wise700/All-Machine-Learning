@@ -1,0 +1,19 @@
+http://sebastianraschka.com/Articles/2014_pca_step_by_step.html
+
+
+PCA
+
+1. Analysis of data to identify patterns and finding patterns to reduce the dimensions 
+   of the dataset with minimal loss of information.
+
+2.  Our desired outcome of the principal component analysis is to project a feature space (our dataset consisting of n d-dimensional samples) 
+    onto a smaller subspace (with k dimensions where k<d) that represents our data “well”
+
+3. Compute Eigen values of given datset, sort them decendingly and chosse the top k dimensions.
+
+4. Use this d×k eigenvector matrix to transform the samples onto the new subspace.
+
+5. Its like looking from the orthogona side. then all points will be mapped to that orthogonal plane.
+
+6. Say we have 20 features and u do PCA for 2 features and look out for the % of variance explained. if its high we can basically train with
+   these two features only.

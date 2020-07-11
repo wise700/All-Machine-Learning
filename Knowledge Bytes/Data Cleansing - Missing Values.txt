@@ -1,0 +1,39 @@
+Missing Values
+
+How to know many values are missing in our data set -all the code snippets is in pandas
+	data.isnull().sum
+
+In Dataframe they appear as NaN or Null. 
+But sometimes a missing value might be represented as zero or something else, so we need to look at our data at hand for handling them
+
+Options to handle missing values (NaN /Null)
+
+1. Deleting rows  -
+	Here, we either delete a particular row if it has a null value for a particular feature and a particular column if it has more than 70-75% of missing values. 
+	This method is advised only when there are enough samples in the data set.
+	Not the most optimal but we can do , but beed to be careful we are not introducing bias when we delete data
+	
+	data.dropna(inplace=True)
+	
+
+2. Replacing With Mean/Median/Mode - 
+	We can calculate the mean, median or mode of the feature and replace it with the missing values.
+
+	data['Age'].replace(np.NaN,data['Age'].mean())
+
+
+3. Assigning An Unique Category - 
+	A categorical feature will have a definite number of possibilities, such as gender, for example. 
+	For these we can make the missing rows as an new category say 'unknown'
+
+	data['Cabin'].fillna('U')
+
+
+4. Predicting The Missing Values - 
+	Using the features which do not have missing values, we can predict the nulls with the help of a machine learning algorithm.
+	This method may result in better accuracy, unless a missing value is expected to have a very high variance.
+	We will be using linear regression to replace the nulls in the feature ‘age’, using other available features
+
+
+5.  Using Algorithms Which Support Missing Values - 
+	Examples - RandomnForest
