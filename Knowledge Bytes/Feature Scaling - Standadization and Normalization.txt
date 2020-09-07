@@ -24,6 +24,18 @@ Standadization
 
 4. The only family of algorithms that I could think of being scale-invariant are tree-based methods
 
+5. sklearn.preprocessing.StandardScaler 
+
+	scaler = StandardScaler()
+	scaler.fit(X)
+	scaler.transform(X)
+
+	OR
+	
+	standardized_X = preprocessing.scale(X)
+
+6. Important to do this before PCA - Refer https://scikit-learn.org/stable/auto_examples/preprocessing/plot_scaling_importance.html
+
 
 
 Normalization
@@ -31,3 +43,4 @@ Normalization
 1. The data is scaled to a fixed range - usually 0 to 1.
 2. A popular application is image processing, where pixel intensities have to be normalized to fit within a certain range (i.e., 0 to 255 for the RGB color range). 
    Also, typical neural network algorithm require data that on a 0-1 scale.
+3. from sklearn.preprocessing import MinMaxScaler
