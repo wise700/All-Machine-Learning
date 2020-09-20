@@ -1,0 +1,49 @@
+Categorical data is not numercal data, but most of the machine learning algos need numerical data.
+
+Exacpet navie bayes and some tree based alogos.
+
+So how do we handle categorocal data
+
+1. If its an output variable like malignent/not maligenent. We can us ebinary encoding with 0 and 1
+
+2. IF its ordinal variable, means order is importtant like L>M>S. we can choose interger encoding with assiging integers
+	like L=10, M=5 and S=1
+
+3. If its nominal varibale, we do one hot encoding, where for each category in the varibale we have a binary encoded column
+
+	one hot encoding adds new attributes according to the number of classes present in the categorical attribute 
+	i.e if there are n number of categories in categorical attribute, n new attributes will be created.
+
+	Dummy variable trap - lets say we have 3 categorires in a categorical variable. travelclass_1 travelclass_2 and travelclass_3
+	Wehne we one hot encode , 3 new features will be added with binary values represented for each row.
+	But, For instance, in the above example, if we know that a passenger’s flight ticket is not First Class and not Economy Class, then it must be Business Class. So we only need to use two of these three dummy-coded variables as a predictor. 
+	More generally, the number of dummy-coded variables needed is one less than the number of possible values, which is K-1.
+	 Hence, one dummy variable is highly correlated with other dummy variables, and needs to be avoided.
+
+	So we can remove one of the categories in the enociding, this is called dummy encoding variable.
+
+	However, in the world of machine learning, One-Hot encoding is more recommended because dummy variable trap is not really a problem when applying regularization
+
+
+4. One hot encoding in Pandas
+	https://towardsdatascience.com/what-is-one-hot-encoding-and-how-to-use-pandas-get-dummies-function-922eb9bd4970
+
+	pd.get_dummies(df.Sex)
+
+	 	female	male
+	0	0	1
+	1	1	0
+
+
+
+	ABove does one hot encoding , to do dummy encoding use
+
+	pd.get_dummies(df.Sex, drop_first=True)
+
+		male
+	0	1
+	1	0
+		
+
+
+	

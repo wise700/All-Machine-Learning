@@ -1,0 +1,19 @@
+Bag of Words
+
+
+
+
+
+
+N Gram
+
+
+
+
+
+
+TFIDF
+
+
+
+
